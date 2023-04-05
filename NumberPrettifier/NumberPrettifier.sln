@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberPrettifier", "NumberP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prettifier", "Prettifier\Prettifier.csproj", "{851098B1-884A-4A93-BFE5-0206061C5173}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prettifier.Tests", "Prettifier.Tests\Prettifier.Tests.csproj", "{BB036489-FA0D-4336-B883-F831BBA8EEE1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{851098B1-884A-4A93-BFE5-0206061C5173}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{851098B1-884A-4A93-BFE5-0206061C5173}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{851098B1-884A-4A93-BFE5-0206061C5173}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB036489-FA0D-4336-B883-F831BBA8EEE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB036489-FA0D-4336-B883-F831BBA8EEE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB036489-FA0D-4336-B883-F831BBA8EEE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB036489-FA0D-4336-B883-F831BBA8EEE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

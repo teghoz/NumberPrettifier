@@ -18,11 +18,6 @@ namespace Prettifier
             }
 
             var stringbuilder = new StringBuilder();
-            var numberIsGreaterThanZero = number > 0;
-            var numberIsLessThanTwenty = number < 20;
-            var numberIsDivisibleByAMillionAtLeastOnce = (number / 1_000_000) > 0;
-            var numberIsDivisibleByAThousandAtLeastOnce = (number / 1_000) > 0;
-            var numberIsDivisibleByAHundredAtLeastOnce = (number / 100) > 0;
 
             if (number.Equals(0))
             {
@@ -34,32 +29,44 @@ namespace Prettifier
                 return $"minus {Pretty(Math.Abs(number))}";
             }
 
-            if (numberIsDivisibleByAMillionAtLeastOnce)
+            if ((int)(number / 1_000_000_000_000) > 0)
             {
-                stringbuilder.Append($"{Pretty(number / 1_000_000)} {_prettifierDictionary.GetWord(1_000_000)} ");
-                number %= 1000000;
+                stringbuilder.Append($"{Pretty((int)(number / 1_000_000_000_000))} {_prettifierDictionary.GetWord(1_000_000_000_000)}, ");
+                number %= 1_000_000_000_000;
             }
 
-            if (numberIsDivisibleByAThousandAtLeastOnce)
+            if ((int)(number / 1_000_000_000) > 0)
             {
-                stringbuilder.Append($"{Pretty(number / 1_000)} {_prettifierDictionary.GetWord(1_000)} ");
-                number %= 1000;
+                stringbuilder.Append($"{Pretty((int)(number / 1_000_000_000))} {_prettifierDictionary.GetWord(1_000_000_000)}, ");
+                number %= 1_000_000_000;
             }
 
-            if (numberIsDivisibleByAHundredAtLeastOnce)
+            if ((int)(number / 1_000_000) > 0)
             {
-                stringbuilder.Append($"{Pretty(number / 100)} {_prettifierDictionary.GetWord(100)} ");
+                stringbuilder.Append($"{Pretty((int)(number / 1_000_000))} {_prettifierDictionary.GetWord(1_000_000)}, ");
+                number %= 1_000_000;
+            }
+
+            if ((int)(number / 1_000) > 0)
+            {
+                stringbuilder.Append($"{Pretty((int)(number / 1_000))} {_prettifierDictionary.GetWord(1_000)} ");
+                number %= 1_000;
+            }
+
+            if ((int)(number / 100) > 0)
+            {
+                stringbuilder.Append($"{Pretty((int)(number / 100))} {_prettifierDictionary.GetWord(100)}");
                 number %= 100;
             }
 
-            if (numberIsGreaterThanZero)
+            if (number > 0)
             {
                 if (!string.IsNullOrEmpty(stringbuilder.ToString()))
                 {
-                    stringbuilder.Append("and ");
+                    stringbuilder.Append(" and ");
                 }
 
-                if (numberIsLessThanTwenty)
+                if (number < 20)
                 {
                     stringbuilder.Append(_prettifierDictionary.GetWord((int)number));
                 }
@@ -68,7 +75,7 @@ namespace Prettifier
                     stringbuilder.Append(_prettifierDictionary.GetWord((int)number / 10));
                     if ((number % 10) > 0)
                     {
-                        stringbuilder.Append($"- {_prettifierDictionary.GetWord((int)number % 10)}");
+                        stringbuilder.Append($"-{_prettifierDictionary.GetWord((int)number % 10)}");
                     }
                 }
             }

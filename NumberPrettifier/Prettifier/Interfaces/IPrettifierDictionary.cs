@@ -9,8 +9,8 @@ namespace Prettifier.Interfaces
 {
     public interface IPrettifierDictionary
     {
-        IDictionary<int, string> GetWordDictionary();
-        string? GetWord(int key)
+        IDictionary<long, string> GetWordDictionary();
+        string? GetWord(long key)
         {
             GetWordDictionary().TryGetValue(key, out var word);
             return word;

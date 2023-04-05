@@ -1,12 +1,13 @@
 using Prettifier.Interfaces;
 using Prettifier.Locales.en;
+using Prettifier.Locales.fr;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddSingleton<IPrettifierDictionary, EnglishPrettyDictionary>();
+builder.Services.AddSingleton<IPrettifierDictionary, FrenchPrettyDictionary>();
 builder.Services.AddSingleton<IPrettifier, FullWordPrettifier>();
 
 var app = builder.Build();
