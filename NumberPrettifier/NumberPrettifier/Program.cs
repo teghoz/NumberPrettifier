@@ -24,7 +24,6 @@ builder.Services.AddSingleton<IPrettifierDictionaryServiceFactory, PrettifierDic
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var summary = BenchmarkRunner.Run<AbbreviatedPrettifier>();
 
 var app = builder.Build();
 
@@ -34,6 +33,11 @@ if (!app.Environment.IsDevelopment())
 {
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
+}
+
+if (app.Configuration["PerformanceMode"] == "true")
+{
+    var summary = BenchmarkRunner.Run<AbbreviatedPrettifier>();
 }
 
 app.UseHttpsRedirection();
