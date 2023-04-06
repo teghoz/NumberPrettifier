@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Prettifier
+﻿namespace Prettifier
 {
     public class AbbreviatedPrettifier : Prettifier
     {
@@ -13,9 +7,9 @@ namespace Prettifier
             var abbreviations = new List<string>() { "", "K", "M", "B", "T" };
             var abbreviationIndex = 0;
             var floatingNumber = (float)number;
-            var thousand = 1000f;
+            const float thousand = 1000f;
 
-            while(floatingNumber >= thousand && abbreviationIndex < abbreviations.Count - 1)
+            while (floatingNumber >= thousand && abbreviationIndex < abbreviations.Count - 1)
             {
                 floatingNumber /= thousand;
                 abbreviationIndex++;

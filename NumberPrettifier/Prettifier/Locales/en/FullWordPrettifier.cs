@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
-using Prettifier.Interfaces;
+﻿using Prettifier.Interfaces;
 
-namespace Prettifier.Locales.en
+namespace Prettifier.Locales.en;
+
+public class FullWordPrettifier : Prettifier
 {
-    public class FullWordPrettifier : Prettifier
+    public FullWordPrettifier(IPrettifierDictionaryServiceFactory prettifierDictionaryServiceFactory)
     {
-        public FullWordPrettifier(IPrettifierDictionaryServiceFactory prettifierDictionaryServiceFactory)
-        {
-            _prettifierDictionaryServiceFactory = prettifierDictionaryServiceFactory;
-        }
+        _prettifierDictionaryServiceFactory = prettifierDictionaryServiceFactory;
     }
 }
