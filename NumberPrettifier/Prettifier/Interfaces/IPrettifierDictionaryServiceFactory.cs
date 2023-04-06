@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Prettifier.Interfaces;
 
-namespace Prettifier.Interfaces
+public interface IPrettifierDictionaryServiceFactory
 {
-    public interface IPrettifierDictionaryServiceFactory
-    {
-        IPrettifierDictionary GetPrettifierDictionary(string? token);
-    }
+    IPrettifierDictionary? GetPrettifierDictionary(string? token);
 }

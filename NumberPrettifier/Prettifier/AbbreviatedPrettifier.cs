@@ -1,27 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BenchmarkDotNet.Attributes;
 
 namespace Prettifier
 {
+    [MemoryDiagnoser]
     public class AbbreviatedPrettifier : Prettifier
     {
+        [Benchmark(Baseline = true)]
+        [Arguments(1_000_000_000_000, "en")]
+        [Arguments(1_000_000_000_000, "fr")]
+        [Arguments(1_000_000_000_000, "abbrev")]
+
         public override string Pretty(double number, string? type = null)
         {
             var abbreviations = new List<string>() { "", "K", "M", "B", "T" };
             var abbreviationIndex = 0;
             var floatingNumber = (float)number;
-            var thousand = 1000f;
+            const float thousand = 1000f;
 
-            while(floatingNumber >= thousand && abbreviationIndex < abbreviations.Count - 1)
+            while (floatingNumber >= thousand && abbreviationIndex < abbreviations.Count - 1)
             {
                 floatingNumber /= thousand;
                 abbreviationIndex++;
             }
 
-            floatingNumber = (float)Math.Round(floatingNumber, 2);
+            floatingNumber = (float)Math.Round(floatingNumber, 1);
             return $"{floatingNumber}{abbreviations[abbreviationIndex]}";
         }
     }
