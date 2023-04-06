@@ -10,9 +10,9 @@ namespace Prettifier.Locales.en
 {
     public class FullWordPrettifier : Prettifier
     {
-        public FullWordPrettifier(IPrettifierDictionary prettifierDictionary)
+        public FullWordPrettifier(IPrettifierDictionaryServiceFactory prettifierDictionaryServiceFactory)
         {
-            _prettifierDictionary = prettifierDictionary;
+            _prettifierDictionaryServiceFactory = prettifierDictionaryServiceFactory;
         }
     }
 }

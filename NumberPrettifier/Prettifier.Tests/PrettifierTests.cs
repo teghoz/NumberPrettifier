@@ -1,6 +1,6 @@
 namespace Prettifier.Tests
 {
-    public class Tests
+    public class PrettifierTests
     {
         [SetUp]
         public void Setup()

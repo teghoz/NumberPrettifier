@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Prettifier.Interfaces
 {
-    public interface IPrettifier
+    public interface IPrettifierServiceFactory
     {
-        string? Pretty(double number, string? type);
+        IPrettifier GetPrettifier(string token);
     }
 }

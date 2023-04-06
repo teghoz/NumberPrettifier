@@ -10,12 +10,15 @@ namespace Prettifier
     public abstract class Prettifier : IPrettifier
     {
         internal IPrettifierDictionary? _prettifierDictionary;
-        public virtual string? Pretty(double number)
+        internal IPrettifierDictionaryServiceFactory _prettifierDictionaryServiceFactory;
+        public virtual string? Pretty(double number, string? type)
         {
+            _prettifierDictionary = _prettifierDictionaryServiceFactory.GetPrettifierDictionary(type);
+
             if (_prettifierDictionary == null)
             {
                 throw new Exception($"Prettifier Dictionary must be available");
-            }
+            }           
 
             var stringbuilder = new StringBuilder();
 
@@ -26,36 +29,36 @@ namespace Prettifier
 
             if (number < 0)
             {
-                return $"minus {Pretty(Math.Abs(number))}";
+                return $"minus {Pretty(Math.Abs(number), type)}";
             }
 
             if ((int)(number / 1_000_000_000_000) > 0)
             {
-                stringbuilder.Append($"{Pretty((int)(number / 1_000_000_000_000))} {_prettifierDictionary.GetWord(1_000_000_000_000)}, ");
+                stringbuilder.Append($"{Pretty((int)(number / 1_000_000_000_000), type)} {_prettifierDictionary.GetWord(1_000_000_000_000)}, ");
                 number %= 1_000_000_000_000;
             }
 
             if ((int)(number / 1_000_000_000) > 0)
             {
-                stringbuilder.Append($"{Pretty((int)(number / 1_000_000_000))} {_prettifierDictionary.GetWord(1_000_000_000)}, ");
+                stringbuilder.Append($"{Pretty((int)(number / 1_000_000_000), type)} {_prettifierDictionary.GetWord(1_000_000_000)}, ");
                 number %= 1_000_000_000;
             }
 
             if ((int)(number / 1_000_000) > 0)
             {
-                stringbuilder.Append($"{Pretty((int)(number / 1_000_000))} {_prettifierDictionary.GetWord(1_000_000)}, ");
+                stringbuilder.Append($"{Pretty((int)(number / 1_000_000), type)} {_prettifierDictionary.GetWord(1_000_000)}, ");
                 number %= 1_000_000;
             }
 
             if ((int)(number / 1_000) > 0)
             {
-                stringbuilder.Append($"{Pretty((int)(number / 1_000))} {_prettifierDictionary.GetWord(1_000)} ");
+                stringbuilder.Append($"{Pretty((int)(number / 1_000), type)} {_prettifierDictionary.GetWord(1_000)} ");
                 number %= 1_000;
             }
 
             if ((int)(number / 100) > 0)
             {
-                stringbuilder.Append($"{Pretty((int)(number / 100))} {_prettifierDictionary.GetWord(100)}");
+                stringbuilder.Append($"{Pretty((int)(number / 100), type)} {_prettifierDictionary.GetWord(100)}");
                 number %= 100;
             }
 

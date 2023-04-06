@@ -8,7 +8,7 @@ namespace Prettifier
 {
     public class AbbreviatedPrettifier : Prettifier
     {
-        public override string Pretty(double number)
+        public override string Pretty(double number, string? type = null)
         {
             var abbreviations = new List<string>() { "", "K", "M", "B", "T" };
             var abbreviationIndex = 0;

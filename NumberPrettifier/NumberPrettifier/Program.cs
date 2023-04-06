@@ -1,3 +1,5 @@
+using Prettifier;
+using Prettifier.Factories;
 using Prettifier.Interfaces;
 using Prettifier.Locales.en;
 using Prettifier.Locales.fr;
@@ -7,8 +9,19 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddSingleton<IPrettifierDictionary, EnglishPrettyDictionary>();
 builder.Services.AddSingleton<IPrettifierDictionary, FrenchPrettyDictionary>();
+
+builder.Services.AddSingleton<IPrettifier, AbbreviatedPrettifier>();
 builder.Services.AddSingleton<IPrettifier, FullWordPrettifier>();
+builder.Services.AddSingleton<IPrettifier, FrenchFullWordPrettifier>();
+
+builder.Services.AddSingleton<IPrettifierServiceFactory, PrettifierFactory>();
+builder.Services.AddSingleton<IPrettifierDictionaryServiceFactory, PrettifierDictionaryFactory>();
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -24,6 +37,12 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
+app.UseSwagger();
+app.UseSwaggerUI(options =>
+{
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+    options.RoutePrefix = string.Empty;
+});
 
 app.MapControllerRoute(
     name: "default",
