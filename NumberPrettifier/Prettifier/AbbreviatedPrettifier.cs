@@ -21,7 +21,7 @@ namespace Prettifier
                 abbreviationIndex++;
             }
 
-            floatingNumber = (float)Math.Round(floatingNumber, 2);
+            floatingNumber = (float)Math.Round(floatingNumber, 1);
             return $"{floatingNumber}{abbreviations[abbreviationIndex]}";
         }
     }
