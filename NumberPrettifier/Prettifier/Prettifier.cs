@@ -32,33 +32,33 @@ namespace Prettifier
                 return $"minus {Pretty(Math.Abs(number), type)}";
             }
 
-            if ((int)(number / 1_000_000_000_000) > 0)
+            if (Math.Floor(number / 1_000_000_000_000) > 0)
             {
-                stringbuilder.Append($"{Pretty((int)(number / 1_000_000_000_000), type)} {_prettifierDictionary.GetWord(1_000_000_000_000)}, ");
+                stringbuilder.Append($"{Pretty(Math.Floor(number / 1_000_000_000_000), type)} {_prettifierDictionary.GetWord(1_000_000_000_000)}, ");
                 number %= 1_000_000_000_000;
             }
 
             if ((int)(number / 1_000_000_000) > 0)
             {
-                stringbuilder.Append($"{Pretty((int)(number / 1_000_000_000), type)} {_prettifierDictionary.GetWord(1_000_000_000)}, ");
+                stringbuilder.Append($"{Pretty(Math.Floor(number / 1_000_000_000), type)} {_prettifierDictionary.GetWord(1_000_000_000)}, ");
                 number %= 1_000_000_000;
             }
 
             if ((int)(number / 1_000_000) > 0)
             {
-                stringbuilder.Append($"{Pretty((int)(number / 1_000_000), type)} {_prettifierDictionary.GetWord(1_000_000)}, ");
+                stringbuilder.Append($"{Pretty(Math.Floor(number / 1_000_000), type)} {_prettifierDictionary.GetWord(1_000_000)}, ");
                 number %= 1_000_000;
             }
 
             if ((int)(number / 1_000) > 0)
             {
-                stringbuilder.Append($"{Pretty((int)(number / 1_000), type)} {_prettifierDictionary.GetWord(1_000)} ");
+                stringbuilder.Append($"{Pretty(Math.Floor(number / 1_000), type)} {_prettifierDictionary.GetWord(1_000)} ");
                 number %= 1_000;
             }
 
             if ((int)(number / 100) > 0)
             {
-                stringbuilder.Append($"{Pretty((int)(number / 100), type)} {_prettifierDictionary.GetWord(100)}");
+                stringbuilder.Append($"{Pretty(Math.Floor(number / 100), type)} {_prettifierDictionary.GetWord(100)}");
                 number %= 100;
             }
 
@@ -66,7 +66,7 @@ namespace Prettifier
             {
                 if (!string.IsNullOrEmpty(stringbuilder.ToString()))
                 {
-                    stringbuilder.Append(" and ");
+                    stringbuilder.Append($" {_prettifierDictionary.GetWord(-1)} ");
                 }
 
                 if (number < 20)

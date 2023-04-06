@@ -21,7 +21,7 @@ namespace Prettifier.Locales.en
                 { 20, "twenty" }, { 30, "thirty" }, { 40, "fourty" }, { 50, "fifty" },
                 { 60, "sixty" }, { 70, "seventy" }, { 80, "eighty" }, { 90, "ninety" },
                 { 100, "hundred" }, { 1_000, "thousand" }, { 1_000_000, "million" }, { 1_000_000_000, "billion" },
-                { 1_000_000_000_000, "trillion" }
+                { 1_000_000_000_000, "trillion" }, { -1, "and" }
             };
         }
     }

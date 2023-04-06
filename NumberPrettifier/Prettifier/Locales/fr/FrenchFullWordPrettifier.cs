@@ -31,33 +31,33 @@ namespace Prettifier.Locales.fr
                 return _prettifierDictionary.GetWord(0);
             }
 
-            if ((int)(number / 1_000_000_000_000) > 0)
+            if (Math.Floor(number / 1_000_000_000_000) > 0)
             {
-                stringbuilder.Append($"{Pretty(number / 1_000_000_000_000, type)} {_prettifierDictionary.GetWord(1_000_000_000_000)} ");
+                stringbuilder.Append($"{Pretty(Math.Floor(number / 1_000_000_000_000), type)} {_prettifierDictionary.GetWord(1_000_000_000_000)} ");
                 number %= 1_000_000_000_000;
             }
 
-            if ((int)(number / 1_000_000_000) > 0)
+            if (Math.Floor(number / 1_000_000_000) > 0)
             {
-                stringbuilder.Append($"{Pretty(number / 1_000_000_000, type)} {_prettifierDictionary.GetWord(1_000_000_000)} ");
+                stringbuilder.Append($"{Pretty(Math.Floor(number / 1_000_000_000), type)} {_prettifierDictionary.GetWord(1_000_000_000)} ");
                 number %= 1_000_000_000;
             }
 
-            if ((int)(number / 1_000_000) > 0)
+            if (Math.Floor(number / 1_000_000) > 0)
             {
-                stringbuilder.Append($"{Pretty(number / 1_000_000, type)} {_prettifierDictionary.GetWord(1_000_000)} ");
+                stringbuilder.Append($"{Pretty(Math.Floor(number / 1_000_000), type)} {_prettifierDictionary.GetWord(1_000_000)} ");
                 number %= 1_000_000;
             }
 
-            if ((int)(number / 1_000) > 0)
+            if (Math.Floor(number / 1_000) > 0)
             {
-                stringbuilder.Append($"{Pretty(number / 1_000, type)} {_prettifierDictionary.GetWord(1_000)} ");
+                stringbuilder.Append($"{Pretty(Math.Floor(number / 1_000), type)} {_prettifierDictionary.GetWord(1_000)} ");
                 number %= 1_000;
             }
 
-            if ((int)(number / 100) > 0)
+            if (Math.Floor(number / 100) > 0)
             {
-                stringbuilder.Append($"{Pretty(number / 100, type)} {_prettifierDictionary.GetWord(100)}");
+                stringbuilder.Append($"{Pretty(Math.Floor(number / 100), type)} {_prettifierDictionary.GetWord(100)}");
                 number %= 100;
             }
 
@@ -65,7 +65,7 @@ namespace Prettifier.Locales.fr
             {
                 if (!string.IsNullOrEmpty(stringbuilder.ToString()))
                 {
-                    stringbuilder.Append("and ");
+                    stringbuilder.Append($" {_prettifierDictionary.GetWord(-1)} ");
                 }
 
                 if (number < 20)
@@ -77,7 +77,7 @@ namespace Prettifier.Locales.fr
                     stringbuilder.Append(_prettifierDictionary.GetWord((int)number / 10));
                     if (number % 10 > 0)
                     {
-                        stringbuilder.Append($"- {_prettifierDictionary.GetWord((int)number % 10)}");
+                        stringbuilder.Append($"-{_prettifierDictionary.GetWord((int)number % 10)}");
                     }
                 }
             }

@@ -67,7 +67,6 @@ export class Home extends Component {
     async getPrettyNumber(number, type) {
         const response = await fetch(`prettifier?number=${number}&type=${type}`);
         const data = await response.text();
-        console.log("data: ", data);
         this.setState({ prettyText: data, loading: false });
     }
 }

@@ -1,3 +1,5 @@
+using Moq;
+
 namespace Prettifier.Tests
 {
     public class PrettifierTests
