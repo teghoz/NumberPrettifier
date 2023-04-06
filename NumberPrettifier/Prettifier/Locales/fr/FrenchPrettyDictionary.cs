@@ -21,7 +21,7 @@ namespace Prettifier.Locales.fr
                 { 20, "vingt" }, { 30, "trente" }, { 40, "quarante" }, { 50, "cinquante" },
                 { 60, "soixante" }, { 70, "soixante-dix" }, { 80, "eighty" }, { 90, "ninety" },
                 { 100, "cent" }, { 1_000, "mille" }, { 1_000_000, "million" }, { 1_000_000_000, "billion" },
-                { 1_000_000_000_000, "trillion" }, { -1, "et" }
+                { 1_000_000_000_000, "trillion" }, { -1, "" }
             };
         }
     }
