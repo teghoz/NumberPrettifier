@@ -1,3 +1,4 @@
+using BenchmarkDotNet.Running;
 using Prettifier;
 using Prettifier.Factories;
 using Prettifier.Interfaces;
@@ -22,6 +23,8 @@ builder.Services.AddSingleton<IPrettifierDictionaryServiceFactory, PrettifierDic
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+var summary = BenchmarkRunner.Run<AbbreviatedPrettifier>();
 
 var app = builder.Build();
 

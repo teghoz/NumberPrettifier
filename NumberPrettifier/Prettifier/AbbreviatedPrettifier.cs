@@ -1,7 +1,15 @@
-﻿namespace Prettifier
+﻿using BenchmarkDotNet.Attributes;
+
+namespace Prettifier
 {
+    [MemoryDiagnoser]
     public class AbbreviatedPrettifier : Prettifier
     {
+        [Benchmark(Baseline = true)]
+        [Arguments(1_000_000_000_000, "en")]
+        [Arguments(1_000_000_000_000, "fr")]
+        [Arguments(1_000_000_000_000, "abbrev")]
+
         public override string Pretty(double number, string? type = null)
         {
             var abbreviations = new List<string>() { "", "K", "M", "B", "T" };
