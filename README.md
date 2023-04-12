@@ -24,14 +24,22 @@ Core logic can be found in this [folder](https://github.com/teghoz/NumberPrettif
 
 The design choice was influenced by the SOLID principles. The goal was to build it in such a way that it allowed for extensibility. The abstract class contains the base implementation and other implementations overrides it. As you might have seen from the folder, I have 3 implementations: en, fr and abbrev - which is the original problem statement.
 
+### How To Run
+
+```
+ dotnet run -c release
+```
+With Performance Benchmark before execution
+```
+ dotnet run -c release -- PerformanceMode=true
+```
+
 ### Presentation
 I created a react-based frontend to visualize the functionality.
 
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/10187133/230438212-48589fa8-727a-4361-bbd2-31d720269c16.png">
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/10187133/230437861-ecf5c900-c619-467b-9f4c-d988524ee3b2.png">
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/10187133/230437950-fb9ac845-62c1-4cce-800e-c2e84437db0f.png">
-
-
 
 ### Performance Benchmarks
 Demo Project to Pretifier Numbers
