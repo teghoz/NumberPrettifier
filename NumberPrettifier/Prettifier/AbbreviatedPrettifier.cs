@@ -10,21 +10,25 @@ namespace Prettifier
         [Arguments(1_000_000_000_000, "fr")]
         [Arguments(1_000_000_000_000, "abbrev")]
 
-        public override string Pretty(double number, string? type = null)
+        public override string Pretty(decimal number, string? type = null)
         {
-            var abbreviations = new List<string>() { "", "K", "M", "B", "T" };
+            var abbreviations = new List<string> { "", "", "M", "B", "T" };
             var abbreviationIndex = 0;
-            var floatingNumber = (float)number;
-            const float thousand = 1000f;
-
-            while (floatingNumber >= thousand && abbreviationIndex < abbreviations.Count - 1)
+            const decimal thousand = 1_000;
+            const decimal million = 1_000_000m;
+            
+            if (number < million)
             {
-                floatingNumber /= thousand;
-                abbreviationIndex++;
+                return $"{Math.Truncate(number * 10) / 10}{abbreviations[abbreviationIndex]}";
             }
 
-            floatingNumber = (float)Math.Round(floatingNumber, 1);
-            return $"{floatingNumber}{abbreviations[abbreviationIndex]}";
+            while (number >= thousand && abbreviationIndex < abbreviations.Count - 1)
+            {
+                number /= thousand;
+                abbreviationIndex++;
+            }
+            
+            return $"{Math.Truncate(number * 10) / 10}{abbreviations[abbreviationIndex]}";
         }
     }
 }
