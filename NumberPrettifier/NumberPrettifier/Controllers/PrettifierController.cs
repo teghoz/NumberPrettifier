@@ -21,7 +21,7 @@ public class PrettifierController : ControllerBase
     }
 
     [HttpGet]
-    public string? Get(double number, string? type)
+    public string? Get(decimal number, string? type)
     {
         var prettyService = _prettifierServiceFactory.GetPrettifier(type);
         return prettyService.Pretty(number, type);

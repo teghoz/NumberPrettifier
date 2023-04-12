@@ -2,5 +2,5 @@
 
 public interface IPrettifier
 {
-    string? Pretty(double number, string? type = null);
+    string? Pretty(decimal number, string? type = null);
 }

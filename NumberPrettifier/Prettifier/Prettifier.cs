@@ -7,7 +7,7 @@ public abstract class Prettifier : IPrettifier
 {
     internal IPrettifierDictionary? _prettifierDictionary;
     internal IPrettifierDictionaryServiceFactory? _prettifierDictionaryServiceFactory;
-    public virtual string? Pretty(double number, string? type = null)
+    public virtual string? Pretty(decimal number, string? type = null)
     {
         _prettifierDictionary = _prettifierDictionaryServiceFactory?.GetPrettifierDictionary(type);
 

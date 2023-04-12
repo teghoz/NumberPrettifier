@@ -10,7 +10,7 @@ public class FrenchFullWordPrettifier : Prettifier
         _prettifierDictionaryServiceFactory = prettifierDictionaryServiceFactory;
     }
 
-    public override string? Pretty(double number, string? type = null)
+    public override string? Pretty(decimal number, string? type = null)
     {
         _prettifierDictionary = _prettifierDictionaryServiceFactory?.GetPrettifierDictionary(type);
 
